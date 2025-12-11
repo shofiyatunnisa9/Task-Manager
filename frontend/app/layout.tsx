@@ -5,7 +5,6 @@ import "./globals.css";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "@/lib/queryClient";
 import Navbar from "@/components/Navbar";
-import ThemeToggle from "@/components/ThemeToggel";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

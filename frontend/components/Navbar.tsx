@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useAuth } from "@/hooks/useAuth";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "./ThemeToggel";
 
 export default function Navbar() {
   const { logout } = useAuth();
@@ -36,30 +37,31 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-white shadow-lg border-b border-gray-200">
+    <nav className="bg-white dark:bg-gray-900 shadow-lg border-b border-gray-200 dark:border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link
               href="/tasks"
-              className="text-2xl font-bold text-gray-800 hover:text-blue-600 transition"
+              className="text-2xl font-bold text-gray-800 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition"
             >
               Task Manager
             </Link>
           </div>
           <div className="flex items-center gap-4">
+            <ThemeToggle />
             {isLoggedIn ? (
               <>
                 <Link
                   href="/tasks"
-                  className="text-gray-700 hover:text-blue-600 transition font-medium"
+                  className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition font-medium"
                 >
                   My Tasks
                 </Link>
 
                 <button
                   onClick={handleLogout}
-                  className="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition font-medium"
+                  className="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition font-medium"
                 >
                   Logout
                 </button>

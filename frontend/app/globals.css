@@ -28,11 +28,15 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 150ms ease, color 150ms ease;
 }
+
 html {
   color-scheme: light;
 }
 
 html.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
   color-scheme: dark;
 }

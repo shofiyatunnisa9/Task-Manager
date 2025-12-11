@@ -6,13 +6,13 @@ import { useTasks } from "@/hooks/useTask";
 const getStatusColor = (status: string) => {
   switch (status) {
     case "OPEN":
-      return "bg-blue-100 text-blue-800 border-blue-200";
+      return "bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900/40 dark:text-blue-100 dark:border-blue-800";
     case "IN_PROGRESS":
-      return "bg-yellow-100 text-yellow-800 border-yellow-200";
+      return "bg-yellow-100 text-yellow-800 border-yellow-200 dark:bg-yellow-900/40 dark:text-yellow-100 dark:border-yellow-800";
     case "DONE":
-      return "bg-green-100 text-green-800 border-green-200";
+      return "bg-green-100 text-green-800 border-green-200 dark:bg-green-900/40 dark:text-green-100 dark:border-green-800";
     default:
-      return "bg-gray-100 text-gray-800 border-gray-200";
+      return "bg-gray-100 text-gray-800 border-gray-200 dark:bg-gray-800/60 dark:text-gray-100 dark:border-gray-700";
   }
 };
 
@@ -26,10 +26,10 @@ export default function TaskListPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center text-gray-900 dark:text-gray-200">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading tasks...</p>
+          <p className="mt-4 text-gray-600 dark:text-gray-300">Loading tasks...</p>
         </div>
       </div>
     );
@@ -44,13 +44,13 @@ export default function TaskListPage() {
     const statusCode = (error as any)?.response?.status;
 
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-6">
-        <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8 text-center">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-6 text-gray-900 dark:text-gray-100">
+        <div className="max-w-md w-full bg-white dark:bg-gray-900/70 border border-gray-200 dark:border-gray-800 rounded-xl shadow-lg p-8 text-center">
           <div className="text-red-500 text-5xl mb-4">⚠️</div>
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">
             Error loading tasks
           </h2>
-          <p className="text-gray-600 mb-4">{errorMessage}</p>
+          <p className="text-gray-600 dark:text-gray-300 mb-4">{errorMessage}</p>
           {statusCode === 401 && (
             <Link
               href="/login"
@@ -65,13 +65,13 @@ export default function TaskListPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900 py-8 px-4 text-gray-900 dark:text-gray-100">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
           <div>
-            <h1 className="text-4xl font-bold text-gray-800 mb-2">My Tasks</h1>
-            <p className="text-gray-600">Manage your tasks efficiently</p>
+            <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-2">My Tasks</h1>
+            <p className="text-gray-600 dark:text-gray-300">Manage your tasks efficiently</p>
           </div>
           <div className="flex gap-5">
             <Link
@@ -86,12 +86,12 @@ export default function TaskListPage() {
 
         {/* Empty State */}
         {(!data || !Array.isArray(data) || data.length === 0) && (
-          <div className="bg-white rounded-xl shadow-lg p-12 text-center">
+          <div className="bg-white dark:bg-gray-900/70 border border-gray-200 dark:border-gray-800 rounded-xl shadow-lg p-12 text-center">
             <div className="text-6xl mb-4">📝</div>
-            <h2 className="text-2xl font-bold text-gray-800 mb-2">
+            <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">
               No tasks yet
             </h2>
-            <p className="text-gray-600 mb-6">
+            <p className="text-gray-600 dark:text-gray-300 mb-6">
               Get started by creating your first task!
             </p>
             {!isLoggedIn && (
@@ -118,7 +118,7 @@ export default function TaskListPage() {
             {data.map((task: any) => (
               <div
                 key={task.id}
-                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
+                className="bg-white dark:bg-gray-900/70 border border-gray-200 dark:border-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
               >
                 <div className="p-6">
                   {/* Status Badge */}
@@ -130,25 +130,25 @@ export default function TaskListPage() {
                     >
                       {task.status || "OPEN"}
                     </span>
-                    <span className="text-xs text-gray-400">
+                    <span className="text-xs text-gray-400 dark:text-gray-500">
                       {new Date(task.createdAt).toLocaleDateString()}
                     </span>
                   </div>
 
                   {/* Title */}
-                  <h2 className="text-xl font-bold text-gray-800 mb-3 line-clamp-2">
+                  <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-3 line-clamp-2">
                     {task.title}
                   </h2>
 
                   {/* Description */}
                   {task.description && (
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
                       {task.description}
                     </p>
                   )}
 
                   {/* Actions */}
-                  <div className="flex gap-2 mt-6 pt-4 border-t border-gray-100">
+                  <div className="flex gap-2 mt-6 pt-4 border-t border-gray-100 dark:border-gray-800">
                     <Link
                       href={`/tasks/${task.id}`}
                       className="flex-1 bg-gradient-to-r from-blue-500 to-blue-600 text-white text-center px-4 py-2 rounded-lg hover:from-blue-600 hover:to-blue-700 transition font-medium text-sm"
