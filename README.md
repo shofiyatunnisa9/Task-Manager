@@ -5,7 +5,7 @@ Full-stack task manager composed of a NestJS backend and a Next.js frontend. The
 ### 🚀Repository Layout
 
 - `Backend/` — NestJS API with Prisma and PostgreSQL, JWT auth, and task endpoints.
-- `frontend/` — Next.js app with React Query, React Hook Form, and Tailwind CSS.
+- `frontend/` — Next.js app with React Query, React Hook Form, and Tailwind CSS, dark mode.
 
 ### 📌 Backend Setup (`Backend/`)
 
@@ -40,3 +40,8 @@ Key endpoints:
    ```
 3. Run the app:
    `npm run dev`
+#### Form Login
+<img width="1350" height="651" alt="1-1" src="https://github.com/user-attachments/assets/c61155a2-11c9-48f6-bc12-d2cea3f347b0" />
+
+#### Home Task (/task)
+<img width="1350" height="679" alt="1-2" src="https://github.com/user-attachments/assets/ed350386-d6e1-42ae-aea1-a0dc38679e61" />
