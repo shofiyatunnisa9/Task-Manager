@@ -12,17 +12,18 @@ export default function Navbar() {
 
   useEffect(() => {
     const checkAuth = () => {
-      const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
+      const token =
+        typeof window !== "undefined" ? localStorage.getItem("token") : null;
       setIsLoggedIn(!!token);
     };
-    
+
     checkAuth();
     // Check auth on storage change (for login/logout)
     window.addEventListener("storage", checkAuth);
-    
+
     // Also check periodically in case of same-tab changes
     const interval = setInterval(checkAuth, 1000);
-    
+
     return () => {
       window.removeEventListener("storage", checkAuth);
       clearInterval(interval);
@@ -39,7 +40,10 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <Link href="/tasks" className="text-2xl font-bold text-gray-800 hover:text-blue-600 transition">
+            <Link
+              href="/tasks"
+              className="text-2xl font-bold text-gray-800 hover:text-blue-600 transition"
+            >
               Task Manager
             </Link>
           </div>
@@ -52,7 +56,7 @@ export default function Navbar() {
                 >
                   My Tasks
                 </Link>
-                
+
                 <button
                   onClick={handleLogout}
                   className="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition font-medium"
@@ -74,4 +78,3 @@ export default function Navbar() {
     </nav>
   );
 }
-

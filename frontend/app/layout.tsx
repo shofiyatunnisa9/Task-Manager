@@ -29,7 +29,7 @@ export default function RootLayout({
       >
         <QueryClientProvider client={queryClient}>
           <Navbar />
-          <ThemeToggle />
+
           {children}
         </QueryClientProvider>
       </body>
