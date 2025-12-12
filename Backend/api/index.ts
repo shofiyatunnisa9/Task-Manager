@@ -9,7 +9,7 @@ function getAllowedOrigins() {
     process.env.ALLOWED_ORIGINS?.split(',').map((s) => s.trim()).filter(Boolean);
   return parsed && parsed.length > 0
     ? parsed
-    : ['http://localhost:3001', 'http://localhost:3000'];
+    : ['https://task-manager-fe-flame-nine.vercel.app', 'http://localhost:3000'];
 }
 
 export default async function handler(req: any, res: any) {

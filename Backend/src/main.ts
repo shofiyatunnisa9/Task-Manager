@@ -6,7 +6,7 @@ async function bootstrap() {
   const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',')
     .map((s) => s.trim())
     .filter(Boolean) || [
-    'https://task-manager-apu1m6vdj-shofiyatunnisas-projects.vercel.app/',
+    'https://task-manager-fe-flame-nine.vercel.app',
     'http://localhost:3000',
   ];
 
