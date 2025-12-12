@@ -12,7 +12,7 @@ function getAllowedOrigins() {
     : ['http://localhost:3001', 'http://localhost:3000'];
 }
 
-export default async function handler(req, res) {
+export default async function handler(req: any, res: any) {
   if (!server) {
     const app = await NestFactory.create(AppModule);
     app.enableCors({
@@ -24,5 +24,5 @@ export default async function handler(req, res) {
     server = app.getHttpAdapter().getInstance();
   }
 
-  return server.emit('request', req, res);
+  server.emit('request', req, res);
 }
